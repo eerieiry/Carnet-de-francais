@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carnet de français — шпаргалка к экзамену</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Иконки -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <!-- Свой дизайн -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar navbar-expand-lg site-navbar sticky-top py-3">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <span data-i18n="brand">Carnet</span> <span class="brand-dot">·</span> <span data-i18n="brandSuffix">de français</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navContent" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+          <li class="nav-item"><a class="nav-link active" href="index.html" data-i18n="navHome">Главная</a></li>
+          <!-- TODO: добавляйте новые пункты меню здесь при необходимости -->
+        </ul>
+      </div>
+
+      <!-- Переключатель языка: ru / en / fr -->
+      <div class="lang-switch" role="group" aria-label="Language switch">
+        <button type="button" data-set-lang="ru">RU</button>
+        <button type="button" data-set-lang="en">EN</button>
+        <button type="button" data-set-lang="fr">FR</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-eyebrow" data-i18n="heroEyebrow">Шпаргалка к экзамену</div>
+      <h1 data-i18n="heroTitle">Тетрадь по французскому</h1>
+      <p class="lead" data-i18n="heroLead">
+        Все темы экзамена в одном месте: грамматика, лексика, устная и письменная часть.
+        Собрано и структурировано для быстрого повторения.
+      </p>
+    </div>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main class="container">
+
+    <!-- ---------- Категория: Грамматика ---------- -->
+    <section class="category-section" id="grammar" style="--cat-color: var(--accent-blue);">
+      <div class="category-heading">
+        <span class="tab-index">01</span>
+        <h2 data-i18n="catGrammarTitle">Грамматика</h2>
+        <p class="category-desc d-none d-md-block" data-i18n="catGrammarDesc">Времена, спряжения, местоимения, предлоги</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+
+        <!-- Пример рабочей карточки — ведёт на готовый шаблон темы -->
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-blue">
+            <i class="bi bi-clock-history topic-icon"></i>
+            <h3>Présent — настоящее время</h3>
+            <p>Спряжение глаголов I, II, III группы + примеры</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+
+        <!-- TODO: скопируйте pages/template-topic.html, переименуйте и заполните.
+             Затем добавьте новую карточку по образцу ниже и поправьте href -->
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-blue">
+            <i class="bi bi-arrow-repeat topic-icon"></i>
+            <h3>Passé composé</h3>
+            <p>Прошедшее сложное время: avoir/être + participe passé</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-blue">
+            <i class="bi bi-signpost-split topic-icon"></i>
+            <h3>Prépositions</h3>
+            <p>Предлоги места, направления и времени</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ---------- Категория: Лексика по темам ---------- -->
+    <section class="category-section" id="vocabulary" style="--cat-color: var(--accent-gold);">
+      <div class="category-heading">
+        <span class="tab-index">02</span>
+        <h2 data-i18n="catVocabTitle">Лексика по темам</h2>
+        <p class="category-desc d-none d-md-block" data-i18n="catVocabDesc">Слова и выражения по тематическим блокам</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-gold">
+            <i class="bi bi-people topic-icon"></i>
+            <h3>La famille</h3>
+            <p>Семья, родственные связи</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-gold">
+            <i class="bi bi-briefcase topic-icon"></i>
+            <h3>Le travail</h3>
+            <p>Работа, профессии, собеседование</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-gold">
+            <i class="bi bi-airplane topic-icon"></i>
+            <h3>Le voyage</h3>
+            <p>Путешествия, транспорт, гостиница</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Категория: Устная часть ---------- -->
+    <section class="category-section" id="speaking" style="--cat-color: var(--accent-wine);">
+      <div class="category-heading">
+        <span class="tab-index">03</span>
+        <h2 data-i18n="catSpeakingTitle">Устная часть</h2>
+        <p class="category-desc d-none d-md-block" data-i18n="catSpeakingDesc">Фразы, клише и конструкции для говорения</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-wine">
+            <i class="bi bi-chat-dots topic-icon"></i>
+            <h3>Donner son avis</h3>
+            <p>Как выразить мнение и согласие/несогласие</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-wine">
+            <i class="bi bi-mic topic-icon"></i>
+            <h3>Présentation personnelle</h3>
+            <p>Рассказ о себе для устного экзамена</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Категория: Письменная часть ---------- -->
+    <section class="category-section" id="writing" style="--cat-color: var(--accent-blue);">
+      <div class="category-heading">
+        <span class="tab-index">04</span>
+        <h2 data-i18n="catWritingTitle">Письменная часть</h2>
+        <p class="category-desc d-none d-md-block" data-i18n="catWritingDesc">Коннекторы, шаблоны эссе и писем</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-blue">
+            <i class="bi bi-link-45deg topic-icon"></i>
+            <h3>Connecteurs logiques</h3>
+            <p>Слова-связки: причина, следствие, противопоставление</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-blue">
+            <i class="bi bi-envelope topic-icon"></i>
+            <h3>Lettre formelle</h3>
+            <p>Структура формального письма</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Категория: Аудирование ---------- -->
+    <section class="category-section" id="listening" style="--cat-color: var(--accent-gold);">
+      <div class="category-heading">
+        <span class="tab-index">05</span>
+        <h2 data-i18n="catListeningTitle">Аудирование</h2>
+        <p class="category-desc d-none d-md-block" data-i18n="catListeningDesc">Устойчивые конструкции и типичные ловушки</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-gold">
+            <i class="bi bi-headphones topic-icon"></i>
+            <h3>Faux amis à l'oral</h3>
+            <p>Слова, которые легко перепутать на слух</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- Категория: Тексты и диалоги ---------- -->
+    <section class="category-section" id="texts" style="--cat-color: var(--accent-wine);">
+      <div class="category-heading">
+        <span class="tab-index">06</span>
+        <h2 data-i18n="catTextsTitle">Тексты и диалоги</h2>
+        <p class="category-desc d-none d-md-block" data-i18n="catTextsDesc">Примеры текстов с разбором</p>
+      </div>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3">
+        <div class="col">
+          <a href="pages/template-topic.html" class="topic-card tape-wine">
+            <i class="bi bi-file-text topic-icon"></i>
+            <h3>Dialogue au restaurant</h3>
+            <p>Пример диалога с разбором лексики</p>
+            <span class="topic-cta" data-i18n="cardOpen">Открыть →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container d-flex flex-column flex-sm-row justify-content-between gap-2">
+      <span data-i18n="footerText">Личная шпаргалка к экзамену по французскому.</span>
+      <span>GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/i18n.js"></script>
+</body>
+</html>

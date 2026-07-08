@@ -1,0 +1,298 @@
+/* =========================================================
+   Carnet de français — design tokens & components
+   Стиль: "тетрадь для подготовки к экзамену"
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  /* --- Палитра (меняйте здесь, чтобы перекрасить весь сайт) --- */
+  --paper:        #F6F1E6; /* фон страницы — тёплая бумага */
+  --paper-2:      #EFE6D3; /* фон карточек, шапки */
+  --ink:          #21283B; /* основной текст / "чернила" */
+  --ink-soft:     #3A4257;
+  --accent-wine:  #9C3D4E; /* акцент 1 — устная часть / тексты */
+  --accent-blue:  #3B5B7C; /* акцент 2 — грамматика / письмо */
+  --accent-gold:  #B98A2E; /* акцент 3 — лексика / аудирование */
+  --line:         #D9CDAF; /* линии тетради, границы */
+  --muted:        #6E6656; /* приглушённый текст */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body:    'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono:    'IBM Plex Mono', 'Courier New', monospace;
+
+  --radius: 6px;
+}
+
+/* ---------- Базовые правила ---------- */
+html, body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, .display-font {
+  font-family: var(--font-display);
+  color: var(--ink);
+}
+
+a { color: var(--accent-blue); }
+a:hover { color: var(--accent-wine); }
+
+::selection { background: var(--accent-gold); color: var(--paper); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- Языковые блоки (перевод контента) ---------- */
+/* По умолчанию (до загрузки JS) виден русский — чтобы не было "мигания" */
+[data-lang]{ display: none; }
+[data-lang="ru"] { display: block; }
+span[data-lang="ru"], strong[data-lang="ru"] { display: inline; }
+
+/* ---------- Навигация ---------- */
+.site-navbar {
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-navbar .navbar-brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.4rem;
+  color: var(--ink);
+  letter-spacing: .01em;
+}
+
+.site-navbar .navbar-brand .brand-dot {
+  color: var(--accent-wine);
+}
+
+.site-navbar .nav-link {
+  font-family: var(--font-mono);
+  font-size: .85rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.site-navbar .nav-link:hover,
+.site-navbar .nav-link.active { color: var(--accent-wine); }
+
+/* Переключатель языка — как штамп/переключатель на карточке словаря */
+.lang-switch {
+  display: inline-flex;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--paper);
+}
+.lang-switch button {
+  border: none;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .03em;
+  padding: .32rem 0.85rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.lang-switch button + button { border-left: 1.5px solid var(--ink); }
+.lang-switch button.active { background: var(--ink); color: var(--paper); }
+.lang-switch button:hover:not(.active) { background: var(--line); }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 3.5rem 0 2.5rem;
+  border-bottom: 1px dashed var(--line);
+  position: relative;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent-wine);
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.08;
+  margin: .4rem 0 .8rem;
+}
+.hero p.lead {
+  color: var(--muted);
+  max-width: 46ch;
+  font-size: 1.05rem;
+}
+
+/* ---------- Разделы-категории (как разделители в тетради) ---------- */
+.category-section { margin-block: 2.75rem; scroll-margin-top: 5rem; }
+
+.category-heading {
+  display: flex;
+  align-items: baseline;
+  gap: .75rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--line);
+  padding-bottom: .6rem;
+}
+.category-heading .tab-index {
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  color: var(--paper);
+  background: var(--cat-color, var(--accent-blue));
+  padding: .15rem .5rem;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.category-heading h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  flex-shrink: 0;
+}
+.category-heading .category-desc {
+  color: var(--muted);
+  font-size: .92rem;
+  margin: 0;
+}
+
+/* ---------- Карточки тем ("флэш-карты" с полоской скотча) ---------- */
+.topic-card {
+  position: relative;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem 1.35rem;
+  height: 100%;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.topic-card::before {
+  /* полоска "скотча" сверху карточки */
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 1.4rem;
+  width: 46px;
+  height: 20px;
+  background: var(--cat-color, var(--accent-blue));
+  opacity: .85;
+  transform: rotate(-4deg);
+  border-radius: 2px;
+}
+
+.topic-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px -12px rgba(33, 40, 59, .35);
+  border-color: var(--cat-color, var(--accent-blue));
+  color: var(--ink);
+}
+
+.topic-card:focus-visible {
+  outline: 3px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+.topic-card .topic-icon {
+  font-size: 1.4rem;
+  color: var(--cat-color, var(--accent-blue));
+}
+
+.topic-card h3 {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.topic-card p {
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 0;
+  flex-grow: 1;
+}
+
+.topic-card .topic-cta {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+}
+.topic-card:hover .topic-cta { color: var(--accent-wine); }
+
+/* Модификаторы цвета категории */
+.tape-wine  { --cat-color: var(--accent-wine); }
+.tape-blue  { --cat-color: var(--accent-blue); }
+.tape-gold  { --cat-color: var(--accent-gold); }
+
+/* ---------- Термин-карточки (для страниц с темами) ---------- */
+.term-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent-blue);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+.term-card .term-fr {
+  font-family: var(--font-mono);
+  font-size: 1.05rem;
+  color: var(--accent-wine);
+  font-weight: 500;
+}
+.term-card .term-translation {
+  color: var(--ink-soft);
+  margin-top: .25rem;
+}
+
+/* ---------- Таблицы спряжений ---------- */
+.conj-table {
+  --bs-table-bg: transparent;
+  border: 1px solid var(--line);
+}
+.conj-table thead th {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-weight: 500;
+}
+.conj-table td, .conj-table th { vertical-align: middle; }
+
+/* ---------- Кнопка "назад на главную" ---------- */
+.btn-back {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: .35rem 1rem;
+}
+.btn-back:hover { background: var(--ink); color: var(--paper); }
+
+/* ---------- Футер ---------- */
+.site-footer {
+  border-top: 1px dashed var(--line);
+  padding: 1.75rem 0;
+  color: var(--muted);
+  font-size: .85rem;
+}
+
+/* ---------- Адаптивность ---------- */
+@media (max-width: 575.98px) {
+  .hero { padding: 2.25rem 0 1.75rem; }
+  .site-navbar .navbar-brand { font-size: 1.2rem; }
+  .lang-switch button { padding: .3rem .65rem; font-size: .72rem; }
+  .category-heading { flex-wrap: wrap; }
+}
